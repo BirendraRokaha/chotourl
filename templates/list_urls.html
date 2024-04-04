@@ -1,0 +1,8 @@
+<!-- templates/new_url.html -->
+{% extends "index.html" %}
+
+{% block list_url %}
+{% for url in urls %}
+{{ url.url_id|e }}
+{% endfor %}
+{% endblock %}

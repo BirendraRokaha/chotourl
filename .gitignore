@@ -1,0 +1,4 @@
+/target
+/.vscode
+/.sqlx
+/artifacts/pg_db

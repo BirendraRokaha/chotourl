@@ -1,0 +1,103 @@
+<!-- templates/new_url.html -->
+{% extends "index.html" %}
+
+{% block query_url %}
+
+{% let len = url.short_url.len() %}
+<div class="w-full max-w-screen-xl mx-auto p-4 md:py-8">
+    {% if len > 0 %}
+    <div id="query_result" class="relative overflow-x-auto shadow-md sm:rounded-lg">
+        <table class="w-full text-sm text-left rtl:text-right text-gray-900 dark:text-gray-900">
+            <tbody>
+                <tr
+                    class="bg-white border-b dark:bg-neutral-200 dark:border-gray-300 hover:bg-gray-50 dark:hover:bg-gray-200">
+                    <td scope="row" class="px-6 py-4">
+                        URL ID
+                    </td>
+                    <td class="px-6 py-4">
+                        {{ url.url_id|e}}
+                    </td>
+                </tr>
+                <tr
+                    class="bg-white border-b dark:bg-neutral-200 dark:border-gray-300 hover:bg-gray-50 dark:hover:bg-gray-200">
+                    <td scope="row" class="px-6 py-4">
+                        Long URL
+                    </td>
+                    <td class="px-6 py-4">
+                        <a href="{{ url.org_url|e }}" target="_blank" rel="noopener noreferrer"
+                            class="hover:text-blue-400">{{
+                            url.org_url|e }}</a>
+                    </td>
+                </tr>
+                <tr
+                    class="bg-white border-b dark:bg-neutral-200 dark:border-gray-300 hover:bg-gray-50 dark:hover:bg-gray-200">
+                    <td scope="row" class="px-6 py-4">
+                        Short URL
+                    </td>
+                    <td class="px-6 py-4">
+                        <a href="{{ url.short_url|e }}" target="_blank" rel="noopener noreferrer"
+                            class="hover:text-blue-400">{{
+                            url.short_url|e }}</a>
+                    </td>
+                </tr>
+
+                <tr
+                    class="bg-white border-b dark:bg-neutral-200 dark:border-gray-300 hover:bg-gray-50 dark:hover:bg-gray-200">
+                    <td scope="row" class="px-6 py-4">
+                        Custom Phrase/Alias
+                    </td>
+                    <td class="px-6 py-4">
+                        {{ url.cust_phrase|e}}
+                    </td>
+                </tr>
+                <tr
+                    class="bg-white border-b dark:bg-neutral-200 dark:border-gray-300 hover:bg-gray-50 dark:hover:bg-gray-200">
+                    <td scope="row" class="px-6 py-4">
+                        URL access code
+                    </td>
+                    <td class="px-6 py-4">
+                        {{ url.url_code|e}}
+                    </td>
+                </tr>
+                <tr
+                    class="bg-white border-b dark:bg-neutral-200 dark:border-gray-300 hover:bg-gray-50 dark:hover:bg-gray-200">
+                    <td scope="row" class="px-6 py-4">
+                        Created At
+                    </td>
+                    <td class="px-6 py-4">
+                        {{ url.inserted_at|e}}
+                    </td>
+                </tr>
+
+                <tr
+                    class="bg-white border-b dark:bg-neutral-200 dark:border-gray-300 hover:bg-gray-50 dark:hover:bg-gray-200">
+                    <td scope="row" class="px-6 py-4">
+                        Accessed At
+                    </td>
+                    <td class="px-6 py-4">
+                        {{ url.updated_at|e}}
+                    </td>
+                </tr>
+                <tr
+                    class="bg-white border-b dark:bg-neutral-200 dark:border-gray-300 hover:bg-gray-50 dark:hover:bg-gray-200">
+                    <td scope="row" class="px-6 py-4">
+                        Visits
+                    </td>
+                    <td class="px-6 py-4">
+                        {{ url.visits|e}}
+                    </td>
+                </tr>
+            </tbody>
+        </table>
+        <button hx-delete="/url/delete?input_string={{ url.url_id|e }}" hx-confirm="Confirm delete?" type="submit"
+            hx-swap="outerHTML swap:0.1s" hx-target="#query_result"
+            class="inline-block w-full rounded bg-orange-500 px-6 pb-2 pt-2.5  font-medium leading-normal text-stone-800 shadow-orange-500 transition duration-150 ease-in-out hover:bg-orange-600 hover:shadow-primary-2 focus:bg-orange-700 focus:shadow-orange-500 focus:outline-none focus:ring-0 active:bg-orange-500 active:shadow-orange-500 dark:shadow-black/30 dark:hover:shadow-dark-strong dark:focus:shadow-dark-strong dark:active:shadow-dark-strong"
+            data-twe-ripple-init data-twe-ripple-color="light">
+            Delete
+        </button>
+    </div>
+    {% else %}
+    <p>Short URL not found. URL IDs are case sensitive</p>
+    {% endif %}
+</div>
+{% endblock %}

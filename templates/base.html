@@ -1,0 +1,60 @@
+<!-- templates/base.html -->
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <title>Choto URL</title>
+    <link href="/assets/main.css" rel="stylesheet" />
+    <link href="https://rsms.me/inter/inter.css" rel="stylesheet" />
+    <script src="/assets/htmx.min.js"></script>
+</head>
+
+<body class="bg-gradient-to-r from-rose-100 to-teal-100  font-inter">
+    <header>
+        <nav>
+            <div class="max-w-screen-xl flex flex-wrap items-center justify-between mx-auto p-4">
+                <a href="/" class="flex items-center space-x-3 rtl:space-x-reverse">
+                    <span
+                        class="self-center text-3xl font-semibold whitespace-nowrap dark:text-stone-800">ChotoURL</span>
+                </a>
+                <button data-collapse-toggle="navbar-default" type="button"
+                    class="inline-flex items-center p-2 w-10 h-10 justify-center text-sm text-stone-800 rounded-lg md:hidden hover:bg-gray-100 focus:outline-none focus:ring-2 focus:ring-gray-200 dark:text-stone-800 dark:hover:bg-stone-800 dark:focus:ring-gray-600"
+                    aria-controls="navbar-default" aria-expanded="false">
+                    <span class="sr-only">Open main menu</span>
+                    <svg class="w-5 h-5" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="none"
+                        viewBox="0 0 17 14">
+                        <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                            d="M1 1h15M1 7h15M1 13h15" />
+                    </svg>
+                </button>
+                <div class="hidden w-full md:block md:w-auto" id="navbar-default">
+                    <li class="list-none">
+                        <a href="/" class="self-center font-semibold whitespace-nowrap dark:text-stone-800">About</a>
+                    </li>
+
+                </div>
+            </div>
+        </nav>
+    </header>
+
+    <main>
+        <div id="content">
+            {% block content %}<p>Placeholder content</p>{% endblock %}
+        </div>
+    </main>
+
+    <hr
+        class="my-6 h-px border-t-0 bg-transparent bg-gradient-to-r from-transparent via-neutral-600 to-transparent opacity-25 dark:via-neutral-600" />
+
+    <footer class="m-4">
+        <div class="w-full max-w-screen-xl mx-auto p-4 md:py-8">
+            <span class="block text-sm text-stone-800 sm:text-center dark:text-stone-800">© 2024 <a href="/"
+                    class="hover:underline">ChotoURL™</a>. All Rights Reserved.</span>
+            <span class="block text-sm text-stone-800 sm:text-center dark:text-stone-800">By <a
+                    href="https://github.com/BirendraRokaha" class="hover:underline">Birendra Rokaha</a></span>
+        </div>
+    </footer>
+
+</body>
+
+</html>
