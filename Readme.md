@@ -7,8 +7,8 @@ Url shortner written in Rust
 2. Db: postgres
 3. Frontend: tailwind, HTMX
 
-<img src="https://github.com/BirendraRokaha/dcmrig/blob/main/artifacts/1.png">
-<img src="https://github.com/BirendraRokaha/dcmrig/blob/main/artifacts/2.png">
+<img src="https://github.com/BirendraRokaha/chotourl/blob/main/artifacts/1.png">
+<img src="https://github.com/BirendraRokaha/chotourl/blob/main/artifacts/2.png">
 
 ## Build instructions
 
