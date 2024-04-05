@@ -1,8 +1,8 @@
-use std::fmt::Error;
-
 use crate::model::{CreateUrl, UrlModel};
+use dotenv::dotenv;
 use rand::{distributions::Alphanumeric, Rng};
 use sqlx::PgPool;
+use std::fmt::Error;
 use url::Url;
 
 pub async fn generate_url(
@@ -72,8 +72,10 @@ async fn check_uniq_id(state: &PgPool, uniq_id: String) -> bool {
 }
 
 fn generate_url_obj(url_id: String, input_url: String, cust_phrase: String) -> UrlModel {
+    dotenv().ok();
+    let domain = std::env::var("DOMAIN").unwrap_or("192.168.0.240".to_string());
     let time_now = chrono::Utc::now();
-    let short_url = format!("http://192.168.0.240/{}", url_id.clone());
+    let short_url = format!("http://{}/{}", domain, url_id.clone());
     UrlModel {
         url_id: url_id.clone(),
         org_url: input_url,

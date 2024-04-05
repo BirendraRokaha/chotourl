@@ -1,5 +1,6 @@
 use askama::Template;
 use axum::{routing::get, Router};
+use dotenv::dotenv;
 use tower_http::services::{ServeDir, ServeFile};
 use tower_http::trace::TraceLayer;
 use tracing::debug;
@@ -19,7 +20,10 @@ async fn main() -> Result<(), Box<dyn std::error::Error>> {
         )
         .with(tracing_subscriber::fmt::layer())
         .init();
-    let port = 8888;
+
+    dotenv().ok();
+
+    let port = std::env::var("PORT").unwrap_or("8888".to_string());
     let addr = format!("0.0.0.0:{}", port);
 
     //Setting up Database

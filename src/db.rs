@@ -1,7 +1,11 @@
+use dotenv::dotenv;
+
 pub type DBPool = sqlx::postgres::PgPool;
 
 pub async fn connect_to_database() -> DBPool {
-    let database_url = "postgres://choto:chotopwd@localhost:5432";
+    dotenv().ok();
+    let database_url = std::env::var("DATAVASE_URL")
+        .unwrap_or("postgres://choto:chotopwd@localhost:5432".to_string());
     sqlx::postgres::PgPoolOptions::new()
         .max_connections(10)
         .idle_timeout(std::time::Duration::from_secs(3))
